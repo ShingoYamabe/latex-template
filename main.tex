@@ -1,0 +1,108 @@
+\documentclass[
+  paper=a4,
+  fontsize=10.5pt,
+  twocolumn,
+  column_gap=2zw,
+  number_of_lines=40,
+  line_length=45zw
+]{jlreq}
+
+% --- 基本パッケージ ---
+% inputenc と luatexja は削除しました
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amsthm, amssymb, mathtools}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{geometry}
+\usepackage{cite}
+\usepackage{enumitem}
+\usepackage{enumitem} % これを追加（キーワード部分の [label={}] を使うために必要）
+\usepackage{hyperref}
+
+% --- 余白設定 (学術誌の標準に近く) ---
+\geometry{
+    top=25mm,
+    bottom=25mm,
+    left=20mm,
+    right=20mm
+}
+
+% --- 1. 数学環境の定義 (amsthmベース) ---
+% 学術論文では装飾を控えめにし、斜体や太字で区別するのが一般的です
+\theoremstyle{definition}
+\newtheorem{definition}{定義}[section]
+\newtheorem{axiom}{公理}[section]
+
+\theoremstyle{plain}
+\newtheorem{theorem}{定理}[section]
+\newtheorem{lemma}[theorem]{補題}
+\newtheorem{proposition}[theorem]{命題}
+\newtheorem{corollary}[theorem]{系}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{注釈}
+
+% --- 2. セクション見出しの調整 (jlreqの作法) ---
+% --- 2. セクション見出しの調整 (jlreqの正式な作法) ---
+\ModifyHeading{section}{format={\large\bfseries\sffamily}}
+\ModifyHeading{subsection}{format={\normalsize\bfseries\sffamily}}
+
+% --- 3. 論文情報 ---
+\title{論文タイトル：TypstからLaTeXへの移行による\\高度な学術組版の実現}
+\author{著者氏名\thanks{〇〇大学大学院 〇〇研究科} \and 指導教員名\thanks{〇〇大学 教授}}
+\date{\today}
+
+% --- ドキュメント開始 ---
+\begin{document}
+
+\maketitle
+
+% --- アブストラクト ---
+\begin{abstract}
+本稿では、Typstのモダンな記法とLaTeXの堅牢な学術的信頼性を両立させるテンプレートについて論じる。特に、amsthmパッケージを用いた定理環境の構築および、jlreqクラスを用いた日本語組版の最適化について焦点を当てる。実験の結果、本テンプレートを用いることで、標準的な学会投稿規定に準拠した文書作成が可能であることが示された。
+\end{abstract}
+
+% キーワード
+\begin{itemize}[label={}]
+    \item \textbf{Keywords:} LaTeX, 学術論文, jlreq, 数理組版, テンプレート
+\end{itemize}
+
+\section{序論}
+現代の学術出版において、組版の正確性は研究内容の信頼性に直結する。古くから用いられてきた\LaTeX{}は、特に数式を含む文書作成において事実上の標準となっている。
+
+\section{提案手法}
+本テンプレートでは、定理環境に\texttt{amsthm}を採用している。これにより、以下の定義や命題が論文の標準的なスタイルで出力される。
+
+\subsection{数学的定義}
+\begin{definition}[学術的テンプレート]
+学術的テンプレートとは、最小限の装飾で最大限の可読性を確保したソースコードの構造を指す。
+\end{definition}
+
+\begin{proposition}
+良いテンプレートは、執筆者が内容に集中することを可能にする。
+\end{proposition}
+
+\begin{proof}
+執筆者がデザインに悩む時間を$T_{design}$、執筆に充てる時間を$T_{write}$とすると、本テンプレートの導入により$T_{design} \to 0$となるため、相対的に$T_{write}$が最大化される。
+\end{proof}
+
+\section{数理モデル}
+論文において、数式は中心的な役割を果たす。
+\begin{equation}
+    \mathcal{L} = \sum_{i=1}^{n} \int_{\Omega} ( \nabla \phi_i \cdot \nabla \psi_j ) \, d\mathbf{x}
+\end{equation}
+式(1)に示すように、インライン数式 $a+b=c$ だけでなく、別行立て数式も一貫したフォントで出力される。
+
+\section{結論}
+本テンプレートは、そのまま投稿論文として使用可能なレベルの体裁を備えている。今後はBibTeXを用いた参考文献管理との統合が期待される。
+
+% --- 参考文献 ---
+\begin{thebibliography}{9}
+\bibitem{texbook}
+Donald E. Knuth, \textit{The \TeX book}, Addison-Wesley, 1984.
+\bibitem{jlreq}
+日本語組版処理の要件（W3C Working Group Note）.
+\end{thebibliography}
+
+\end{document}
